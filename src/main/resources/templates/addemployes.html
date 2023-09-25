@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SWIFT BANQUE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="~{headeradmin :: myheaderadmin}"></div>
+
+<div  class="container mt-5"> 
+<form  th:action="@{/saveEmployes}"   th:object="${employee}" method="post" >
+
+<center>
+<h1>Ajouter Employe</h1>
+</center>
+<div  class="container mt-5"> 
+<div class="mb-3">
+  <label  class="form-label"><b>Nom Employeé</b></label>
+  <input type="text" class="form-control" id="nomEmployee"   name="nomEmploye">
+  
+  <label  class="form-label"><b>Supérieur hiérarchique</b></label>
+  <select  th:field="*{EmployesSup}" class="form-select" aria-label="Default select example"  data-live-search="true">
+
+  <option name="EmployesSup" id="EmployesSup" th:each="emp :${empolyes}" th:text="${emp.nomEmploye}" th:value="${emp.codeEmploye}"></option>
+
+  </select>
+  
+  <label  class="form-label"><b>Groupes</b></label>
+  <select class="form-select"     th:field="*{groupes}"  aria-label="Default select example"  data-live-search="true">
+
+  <option name="groupes" th:each="grp :${allgroupe}" th:text="${grp.nomGroupe}" th:value="${grp.codeGroupe}"></option>
+
+  </select>
+  
+  </div>
+
+</div>
+<div  class="container mt-5" center> 
+<center>
+<button type="submit" class="btn btn-success">Ajouter</button>
+</center>
+</div>
+</form>
+
+</body>
+</html>
